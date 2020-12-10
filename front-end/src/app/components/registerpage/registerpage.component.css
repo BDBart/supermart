@@ -1,18 +1,13 @@
-.loginContainer {
-  height: 300px;
+.registerContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  align-content: space-between;
-  margin-top: 36px;
-
+  margin-top: 69px;
 }
 
-.credentialsItem {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.checkBox {
+  margin-top: 9px;
 }
 
 input.ng-touched.ng-invalid {

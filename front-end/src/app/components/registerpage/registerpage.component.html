@@ -1,0 +1,13 @@
+<!--Form for adding user -->
+<form (ngSubmit)="addUser()" [formGroup]="addUserForm">
+  <div class="form-group registerContainer">
+    <div>
+      <input type="text" placeholder="E-mail" formControlName="email">
+    </div>
+    <div>
+      <input type="checkbox" class="checkBox" id="agree" formControlName="agree">
+      <label for="agree">I agree with the terms of service</label>
+    </div>
+    <button [disabled]="addUserForm.invalid">Register</button>
+  </div>
+</form>
