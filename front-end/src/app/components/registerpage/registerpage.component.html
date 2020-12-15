@@ -2,12 +2,26 @@
 <form (ngSubmit)="addUser()" [formGroup]="addUserForm">
   <div class="form-group registerContainer">
     <div>
-      <input type="text" placeholder="E-mail" formControlName="email">
+      <input type="text" placeholder="E-mail" formControlName="email" [(ngModel)]="user.email">
     </div>
-    <div>
-      <input type="checkbox" class="checkBox" id="agree" formControlName="agree">
-      <label for="agree">I agree with the terms of service</label>
+    <div class="checkBoxContainer">
+      <input type="checkbox" class="checkBox" id="akkoord" formControlName="akkoord" [(ngModel)]="user.akkoord">
+      <label for="akkoord">Ik ga akkoord met de servicevoorwaarden*</label>
+
+      <input type="checkbox" class="checkBox" id="m_afhalen" formControlName="m_afhalen" [(ngModel)]="user.m_afhalen">
+      <label for="m_afhalen">Ik ondersteun afhalen magazijn</label>
+
+      <input type="checkbox" class="checkBox" id="t_afhalen" formControlName="t_afhalen" [(ngModel)]="user.t_afhalen">
+      <label for="t_afhalen">Ik ondersteun thuis afhalen</label>
+
+      <input type="checkbox" class="checkBox" id="versturen" formControlName="versturen" [(ngModel)]="user.versturen">
+      <label for="versturen">Ik ondersteun versturen (vooruitbetalen)</label>
+
+      <input type="checkbox" class="checkBox" id="rembours" formControlName="rembours" [(ngModel)]="user.rembours">
+      <label for="rembours">Ik ondersteun versturen onder rembours</label>
     </div>
+    <!--disabled adres ding maar wanneer thuis afhalen wordt ondersteund moet adres erbij-->
+
     <button [disabled]="addUserForm.invalid">Register</button>
   </div>
 </form>

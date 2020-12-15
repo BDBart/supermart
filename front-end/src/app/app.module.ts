@@ -6,6 +6,7 @@ import { Route, RouterModule} from "@angular/router";
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { RegisterpageComponent } from './components/registerpage/registerpage.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 const routes: Route[] = [
   { path: '', component: HomepageComponent },
@@ -22,7 +23,8 @@ const routes: Route[] = [
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

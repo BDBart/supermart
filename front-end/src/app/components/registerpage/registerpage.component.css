@@ -6,6 +6,11 @@
   margin-top: 69px;
 }
 
+.checkBoxContainer {
+  display: flex;
+  flex-direction: column;
+}
+
 .checkBox {
   margin-top: 9px;
 }

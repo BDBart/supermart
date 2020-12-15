@@ -7,6 +7,7 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
+@Provider
 public class CorsFilter implements ContainerResponseFilter {
 
     @Override

@@ -13,6 +13,11 @@
         <element id="directory" name="classes">
           <element id="module-output" name="supermart" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.5.5" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.9" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/supermart-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
