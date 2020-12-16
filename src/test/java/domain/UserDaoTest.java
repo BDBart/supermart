@@ -1,6 +1,5 @@
 package domain;
 
-import org.example.domain.UserDao;
 import org.example.domain.UserDaoMock;
 import org.example.domain.UserEntity;
 import org.junit.jupiter.api.Test;

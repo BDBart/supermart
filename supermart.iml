@@ -5,11 +5,12 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
+          <factory-entry name="H2-restdemo" />
           <factory-entry name="default" />
           <factory-entry name="supermartdb" />
         </datasource-mapping>
         <naming-strategy-map />
-        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/test/resources/test-persistence.xml" />
       </configuration>
     </facet>
     <facet type="web" name="Web">
@@ -90,5 +91,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: javax.el:javax.el-api:3.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: javax.interceptor:javax.interceptor-api:1.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
   </component>
 </module>

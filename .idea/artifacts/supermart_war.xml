@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="supermart-1.0-SNAPSHOT.war">
+    <root id="archive" name="supermart.war">
       <element id="artifact" artifact-name="supermart:war exploded" />
     </root>
   </artifact>
