@@ -16,13 +16,13 @@ public class UserEntity {
     public static final String FIND_BY_LOGIN_PASSWORD = "UserEntity.findByLoginAndPassword";
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false)
     private String email;
 
-    //@Column(length = 256, nullable = false)
+    @Column(length = 256, nullable = false)
     private String password;
 
     private boolean m_afhalen;

@@ -3,25 +3,41 @@
   <div class="form-group registerContainer">
     <div>
       <input type="text" placeholder="E-mail" formControlName="email" [(ngModel)]="user.email">
+      <!--Email bestaat al moet hier komen als dat wordt teruggegeven-->
+    </div>
+    <div>
+      <input type="password" placeholder="Password" formControlName="password" [(ngModel)]="user.password">
+    </div>
+    <div *ngIf="hideAdresInputs">
+      <input type="text" placeholder="Adres" formControlName="adres" [(ngModel)]="user.adres">
+      <input type="text" placeholder="Postcode" formControlName="postcode" [(ngModel)]="user.postcode">
+      <input type="text" placeholder="Woonplaats" formControlName="woonplaats" [(ngModel)]="user.woonplaats">
     </div>
     <div class="checkBoxContainer">
-      <input type="checkbox" class="checkBox" id="akkoord" formControlName="akkoord" [(ngModel)]="user.akkoord">
-      <label for="akkoord">Ik ga akkoord met de servicevoorwaarden*</label>
-
-      <input type="checkbox" class="checkBox" id="m_afhalen" formControlName="m_afhalen" [(ngModel)]="user.m_afhalen">
-      <label for="m_afhalen">Ik ondersteun afhalen magazijn</label>
-
-      <input type="checkbox" class="checkBox" id="t_afhalen" formControlName="t_afhalen" [(ngModel)]="user.t_afhalen">
-      <label for="t_afhalen">Ik ondersteun thuis afhalen</label>
-
-      <input type="checkbox" class="checkBox" id="versturen" formControlName="versturen" [(ngModel)]="user.versturen">
-      <label for="versturen">Ik ondersteun versturen (vooruitbetalen)</label>
-
-      <input type="checkbox" class="checkBox" id="rembours" formControlName="rembours" [(ngModel)]="user.rembours">
-      <label for="rembours">Ik ondersteun versturen onder rembours</label>
+      <div>
+        <input type="checkbox" class="checkBox" id="akkoord" formControlName="akkoord" [(ngModel)]="user.akkoord">
+        <label for="akkoord">Ik ga akkoord met de servicevoorwaarden*</label>
+      </div>
+      <div>
+        <input type="checkbox" class="checkBox" id="m_afhalen" formControlName="m_afhalen" [(ngModel)]="user.m_afhalen">
+        <label for="m_afhalen">Ik ondersteun afhalen magazijn</label>
+      </div>
+      <div>
+        <input type="checkbox" class="checkBox" id="t_afhalen" formControlName="t_afhalen" [(ngModel)]="user.t_afhalen">
+        <label for="t_afhalen">Ik ondersteun thuis afhalen</label>
+      </div>
+      <div>
+        <input type="checkbox" class="checkBox" id="versturen" formControlName="versturen" [(ngModel)]="user.versturen">
+        <label for="versturen">Ik ondersteun versturen (vooruitbetalen)</label>
+      </div>
+      <div>
+        <input type="checkbox" class="checkBox" id="rembours" formControlName="rembours" [(ngModel)]="user.rembours">
+        <label for="rembours">Ik ondersteun versturen onder rembours</label>
+      </div>
     </div>
-    <!--disabled adres ding maar wanneer thuis afhalen wordt ondersteund moet adres erbij-->
+
 
     <button [disabled]="addUserForm.invalid">Register</button>
+    <!--div met succesvol account aangemaakt met email moet hier-->
   </div>
 </form>

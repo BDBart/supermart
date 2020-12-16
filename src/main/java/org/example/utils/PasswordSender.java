@@ -7,7 +7,9 @@ public class PasswordSender {
     private static final String USER_EMAIL = "traineeship.martkplaats.no.reply@gmai.com";
     private static final String EMAIL_PASSWORD = "JeMoeder@69";
 
-    public static void sendPasswordToNewUser(String to, String sub, String content){
+    private static final String SUBJECT = "Your password";
+
+    public static void sendPasswordToNewUser(String to, String content){
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.socketFactory.port", "465");
@@ -27,7 +29,7 @@ public class PasswordSender {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(USER_EMAIL));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-            message.setSubject(sub);
+            message.setSubject(SUBJECT);
             message.setText(content);
             Transport.send(message);
             System.out.println("Email has been sent to new user");

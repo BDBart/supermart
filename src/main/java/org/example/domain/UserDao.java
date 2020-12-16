@@ -1,7 +1,12 @@
 package org.example.domain;
 
+import org.example.utils.PasswordSender;
+
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
+
+import static org.example.utils.PasswordUtils.generatePassword;
+import static org.example.utils.PasswordUtils.digestPassword;
 
 @Stateless
 public class UserDao extends Dao<UserEntity> {
