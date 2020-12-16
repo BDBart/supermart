@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {User} from "../../models/User";
+import {UserService} from "../../services/user.service";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-homepage',
@@ -7,14 +10,23 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent {
+
+  userLogin = {} as User;
+  //loggedInUser$ = this.service.loggedInMessage$;
+
+  constructor(private service: UserService) {
+  }
+
   loginAttemptForm = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   });
 
-
   loginAttempt() : void{
-    //do something
-    console.log("Er is iets gebeurd");
+    //service aanroepen om in te loggen
+    this.service.login(this.userLogin);
+    //user weer leegmaken
+    this.userLogin = {} as User;
+    //console.log("Er is iets gebeurd");
   }
 }

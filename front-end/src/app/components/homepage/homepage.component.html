@@ -1,8 +1,8 @@
 <form (ngSubmit)="loginAttempt()" [formGroup]="loginAttemptForm">
   <div class="form-group loginContainer">
     <div class="credentialsItem">
-      <input type="text" placeholder="Username" formControlName="username">
-      <input type="password" placeholder="Password" formControlName="password">
+      <input type="text" placeholder="Username" formControlName="username" [(ngModel)]="userLogin.email">
+      <input type="password" placeholder="Password" formControlName="password" [(ngModel)]="userLogin.password">
       <button [disabled]="loginAttemptForm.invalid">Login</button>
     </div>
 

@@ -6,24 +6,18 @@ import org.example.utils.PasswordUtils;
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
 
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
 
 @Stateless
 public class UserDao extends Dao<UserEntity> {
 
-    public void checkLoginCredentials(String login, String password) {
-        TypedQuery<UserEntity> query = entityManager.createNamedQuery(UserEntity.FIND_BY_LOGIN_PASSWORD, UserEntity.class);
-        query.setParameter("email", login);
-        query.setParameter("password", PasswordUtils.digestPassword(password));
-        UserEntity ue = query.getSingleResult();
-
-        if (ue == null) throw new SecurityException("Invalid email or password");
-    }
-
-    public boolean findByEmail(String email){
-        TypedQuery<Long> query = entityManager.createQuery("select count(ue) from UserEntity ue where ue.email like :firstarg", Long.class);
-        query.setParameter("firstarg", "%" + email + "%");
-        Long count = query.getSingleResult();
-        return (!count.equals(0L));
+    public UserEntity getLoginCredentials(String login) {
+        TypedQuery<UserEntity> query = entityManager.createQuery("select ue from UserEntity ue where ue.email like :firstarg", UserEntity.class);
+        query.setParameter("firstarg", "%" + login + "%");
+        UserEntity userEntity = query.getSingleResult();
+        return userEntity;
     }
 
     @Override
@@ -31,5 +25,12 @@ public class UserDao extends Dao<UserEntity> {
         // wachtwoord hashen en setten en opslaan
         entity.setPassword(PasswordUtils.digestPassword(entity.getPassword()));
         return super.add(entity);
+    }
+
+    public boolean findByEmail(String email){
+        TypedQuery<Long> query = entityManager.createQuery("select count(ue) from UserEntity ue where ue.email like :firstarg", Long.class);
+        query.setParameter("firstarg", "%" + email + "%");
+        Long count = query.getSingleResult();
+        return (!count.equals(0L) );
     }
 }
