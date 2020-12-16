@@ -12,7 +12,8 @@ import {Subject} from "rxjs";
 export class HomepageComponent {
 
   userLogin = {} as User;
-  //loggedInUser$ = this.service.loggedInMessage$;
+  loggedInUser$ = this.service.loggedInMessage$;
+  loginFailed$ = this.service.loginAttemptMessage$;
 
   constructor(private service: UserService) {
   }

@@ -2,16 +2,16 @@
 <form (ngSubmit)="addUser()" [formGroup]="addUserForm">
   <div class="form-group registerContainer">
     <div>
-      <input type="text" placeholder="E-mail" formControlName="email" [(ngModel)]="user.email">
+      <input type="text" placeholder="E-mail*" formControlName="email" [(ngModel)]="user.email">
       <p>{{_message$ | async}}</p>
     </div>
     <div>
-      <input type="password" placeholder="Password" formControlName="password" [(ngModel)]="user.password">
+      <input type="password" placeholder="Password*" formControlName="password" [(ngModel)]="user.password">
     </div>
     <div *ngIf="hideAdresInputs">
-      <input type="text" placeholder="Adres" formControlName="adres" [(ngModel)]="user.adres">
-      <input type="text" placeholder="Postcode" formControlName="postcode" [(ngModel)]="user.postcode">
-      <input type="text" placeholder="Woonplaats" formControlName="woonplaats" [(ngModel)]="user.woonplaats">
+      <input type="text" placeholder="Adres*" formControlName="adres" [(ngModel)]="user.adres">
+      <input type="text" placeholder="Postcode*" formControlName="postcode" [(ngModel)]="user.postcode">
+      <input type="text" placeholder="Woonplaats*" formControlName="woonplaats" [(ngModel)]="user.woonplaats">
     </div>
     <div class="checkBoxContainer">
       <div>
@@ -40,6 +40,9 @@
     </div>
     <div>
       <p>{{Cmessage$ | async}}</p>
+    </div>
+    <div>
+      <p>psssst.... velden met een asterisk moet je invullen/aantikken!</p>
     </div>
   </div>
 </form>

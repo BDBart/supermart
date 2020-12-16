@@ -35,6 +35,6 @@ li .activeMenu {
   background-color: #585858;
 }
 
-li .logout {
-
+logout {
+  float: right;
 }

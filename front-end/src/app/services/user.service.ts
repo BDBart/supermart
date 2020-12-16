@@ -13,6 +13,7 @@ export class UserService {
 
   registeredUser = {} as User;
   loggedInUser = {} as User;
+  isLoggedIn$ = new Subject<boolean>();
   loggedInUsername = new Subject<string>();
 
   createdMessage$ = new Subject<string>();
@@ -42,13 +43,14 @@ export class UserService {
         data => {
           this.loggedInUser = data;
           this.loggedInUsername.next(this.loggedInUser.email);
+          this.isLoggedIn$.next(true);
           this.loggedInMessage$.next('Ingelogd als ' + data.email);
           //even voor testen
           this.loginAttemptMessage$.next("Gebruiker is ingelogd");
           //hier router naar andere pagina
         }, error => {
           //hier als inlogpoging niet is geluk
-          this.loginAttemptMessage$.next(error.statusText);
+          this.loginAttemptMessage$.next("Heb je wel de juiste gegevens ingevuld? Want uuhhm...: " + error.statusText);
         }
       )
   }

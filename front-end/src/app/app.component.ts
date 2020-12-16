@@ -9,17 +9,9 @@ import {Router} from "@angular/router";
 })
 export class AppComponent {
   title = 'front-end';
-  activeUser = false;
+  activeUser = this.service.isLoggedIn$;
 
   constructor(private service: UserService, private router: Router) { }
-
-  checkActiveUser(): void {
-    if (this.service.loggedInUser == null){
-      this.activeUser = false;
-    } else {
-      this.activeUser = true;
-    }
-  }
 
   logOff(): void {
     this.router.navigateByUrl('/home');
