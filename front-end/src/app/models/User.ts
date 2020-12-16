@@ -1,8 +1,8 @@
 export interface User {
+  id?: number;
   email: string;
   password: string;
   akkoord: boolean;
-  id?: number;
   adres?: string;
   postcode?: string;
   woonplaats?: string;

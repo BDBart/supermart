@@ -3,7 +3,7 @@
   <div class="form-group registerContainer">
     <div>
       <input type="text" placeholder="E-mail" formControlName="email" [(ngModel)]="user.email">
-      <!--Email bestaat al moet hier komen als dat wordt teruggegeven-->
+      <p>{{_message$ | async}}</p>
     </div>
     <div>
       <input type="password" placeholder="Password" formControlName="password" [(ngModel)]="user.password">
@@ -35,9 +35,11 @@
         <label for="rembours">Ik ondersteun versturen onder rembours</label>
       </div>
     </div>
-
-
-    <button [disabled]="addUserForm.invalid">Register</button>
-    <!--div met succesvol account aangemaakt met email moet hier-->
+    <div>
+      <button [disabled]="addUserForm.invalid">Register</button>
+    </div>
+    <div>
+      <p>{{Cmessage$ | async}}</p>
+    </div>
   </div>
 </form>

@@ -14,7 +14,7 @@ export class UserService {
   registeredUser = {} as User;
 
   createdMessage$ = new Subject<string>();
-  passwordMessage$ = new Subject<string>();
+  emailMessage$ = new Subject<string>();
 
   constructor(private http: HttpClient) { }
 
@@ -23,8 +23,7 @@ export class UserService {
       .subscribe(
         data => {
           this.registeredUser = data;
-          this.createdMessage$.next(`Account met email: ${data.email} is aangemaakt.`)
-          this.passwordMessage$.next(`Bekijk uw email ${data.email} voor uw wachtwoord.`);
+          this.createdMessage$.next(`Account met email: ${data.email} is aangemaakt.`);
         },
         error => {
           console.log(error);
