@@ -7,11 +7,15 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { RegisterpageComponent } from './components/registerpage/registerpage.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import {AuthGuardService} from "./services/auth-guard.service";
+import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
+import {AuthGuard} from "./AuthGuard";
 
 const routes: Route[] = [
   { path: '', component: HomepageComponent },
   { path: 'home', component: HomepageComponent },
-  { path: 'register', component: RegisterpageComponent }
+  { path: 'register', component: RegisterpageComponent },
+  { path: 'delete', component: DeleteAccountComponent, canActivate: [AuthGuard]}
   ];
 
 @NgModule({
@@ -19,6 +23,7 @@ const routes: Route[] = [
     AppComponent,
     HomepageComponent,
     RegisterpageComponent,
+    DeleteAccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +31,7 @@ const routes: Route[] = [
     RouterModule.forRoot(routes),
     HttpClientModule
   ],
-  providers: [],
+  providers: [ AuthGuardService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,6 +3,7 @@
   <li><a routerLink="/home" routerLinkActive="activeMenu">Home</a></li>
   <li><a routerLink="/register" routerLinkActive="activeMenu">Register</a></li>
 <!--    <li *ngIf="activeUser" (click)="logOff" class="logout"><a>Log uit</a></li>-->
+  <li *ngIf="canDelete()"><a routerLink="/delete" routerLinkActive="activeMenu">Delete Account</a></li>
+  <li *ngIf="canDelete()"><a (click)="logOff()" routerLink="/home">Logout</a></li>
 </ul>
-<button *ngIf="activeUser">Uitloggen</button>
 <router-outlet></router-outlet>

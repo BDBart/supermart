@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Observable, of, Subject} from 'rxjs';
+import {Observable, of, Subject, throwError} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
-import { HttpClient } from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpResponse} from "@angular/common/http";
 import {User} from "../models/User";
 
 @Injectable({
@@ -13,7 +13,7 @@ export class UserService {
 
   registeredUser = {} as User;
   loggedInUser = {} as User;
-  isLoggedIn$ = new Subject<boolean>();
+  isLoggedIn$ = new Subject<User>();
   loggedInUsername = new Subject<string>();
 
   createdMessage$ = new Subject<string>();
@@ -32,7 +32,7 @@ export class UserService {
         },
         error => {
           console.log(error);
-          this.createdMessage$.next(`Aanmaken account is mislukt. Reden: ${error.statusText}`);
+          this.createdMessage$.next(`Er is al een account met dat email-adres...`);
         }
       )
   }
@@ -43,13 +43,10 @@ export class UserService {
         data => {
           this.loggedInUser = data;
           this.loggedInUsername.next(this.loggedInUser.email);
-          this.isLoggedIn$.next(true);
+          this.isLoggedIn$.next(data);
           this.loggedInMessage$.next('Ingelogd als ' + data.email);
-          //even voor testen
-          this.loginAttemptMessage$.next("Gebruiker is ingelogd");
-          //hier router naar andere pagina
+          localStorage.setItem('SessionUser', '1');
         }, error => {
-          //hier als inlogpoging niet is geluk
           this.loginAttemptMessage$.next("Heb je wel de juiste gegevens ingevuld? Want uuhhm...: " + error.statusText);
         }
       )
