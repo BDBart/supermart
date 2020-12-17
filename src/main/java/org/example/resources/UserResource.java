@@ -6,12 +6,10 @@ import org.example.domain.UserEntity;
 import org.example.utils.PasswordUtils;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+
 
 @Path("/user") //hhtp://localhost:9080/api/user
 public class UserResource implements JsonResource {
