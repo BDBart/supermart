@@ -8,22 +8,19 @@ import { RegisterpageComponent } from './components/registerpage/registerpage.co
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import {AuthGuardService} from "./services/auth-guard.service";
-import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import {AuthGuard} from "./AuthGuard";
 
 const routes: Route[] = [
   { path: '', component: HomepageComponent },
   { path: 'home', component: HomepageComponent },
-  { path: 'register', component: RegisterpageComponent },
-  { path: 'delete', component: DeleteAccountComponent, canActivate: [AuthGuard]}
+  { path: 'register', component: RegisterpageComponent }
   ];
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    RegisterpageComponent,
-    DeleteAccountComponent,
+    RegisterpageComponent
   ],
   imports: [
     BrowserModule,

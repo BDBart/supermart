@@ -13,12 +13,9 @@ export class UserService {
 
   registeredUser = {} as User;
   loggedInUser = {} as User;
-  isLoggedIn$ = new Subject<User>();
   loggedInUsername = new Subject<string>();
 
-  createdMessage$ = new Subject<string>();
-  emailMessage$ = new Subject<string>();
-  loggedInMessage$ = new Subject<string>();
+  createdFailedMessage$ = new Subject<string>();
   loginAttemptMessage$ = new Subject<string>();
 
   constructor(private http: HttpClient) { }
@@ -28,11 +25,11 @@ export class UserService {
       .subscribe(
         data => {
           this.registeredUser = data;
-          this.createdMessage$.next(`Account met email: ${data.email} is aangemaakt.`);
+          alert(`Account met email: ${data.email} is aangemaakt`);
         },
         error => {
           console.log(error);
-          this.createdMessage$.next(`Er is al een account met dat email-adres...`);
+          this.createdFailedMessage$.next(`Er is al een account met dat email-adres...`);
         }
       )
   }
@@ -43,8 +40,6 @@ export class UserService {
         data => {
           this.loggedInUser = data;
           this.loggedInUsername.next(this.loggedInUser.email);
-          this.isLoggedIn$.next(data);
-          this.loggedInMessage$.next('Ingelogd als ' + data.email);
           localStorage.setItem('SessionUser', '1');
         }, error => {
           this.loginAttemptMessage$.next("Heb je wel de juiste gegevens ingevuld? Want uuhhm...: " + error.statusText);

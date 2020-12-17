@@ -1,9 +1,9 @@
 <!--Form for adding user -->
 <form (ngSubmit)="addUser()" [formGroup]="addUserForm">
   <div class="form-group registerContainer">
+    <div><h1>Account aanmaken</h1></div>
     <div>
       <input type="text" placeholder="E-mail*" formControlName="email" [(ngModel)]="user.email">
-      <p>{{_message$ | async}}</p>
     </div>
     <div>
       <input type="password" placeholder="Password*" formControlName="password" [(ngModel)]="user.password">
@@ -37,9 +37,6 @@
     </div>
     <div>
       <button [disabled]="addUserForm.invalid">Register</button>
-    </div>
-    <div>
-      <p>{{Cmessage$ | async}}</p>
     </div>
     <div>
       <p>psssst.... velden met een asterisk moet je invullen/aantikken!</p>

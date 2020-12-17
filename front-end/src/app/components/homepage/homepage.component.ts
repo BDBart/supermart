@@ -12,11 +12,9 @@ import {Subject} from "rxjs";
 export class HomepageComponent {
 
   userLogin = {} as User;
-  loggedInUser$ = this.service.loggedInMessage$;
   loginFailed$ = this.service.loginAttemptMessage$;
 
-  constructor(private service: UserService) {
-  }
+  constructor(private service: UserService) { }
 
   loginAttemptForm = new FormGroup({
     username: new FormControl('', Validators.required),
@@ -24,10 +22,7 @@ export class HomepageComponent {
   });
 
   loginAttempt() : void{
-    //service aanroepen om in te loggen
     this.service.login(this.userLogin);
-    //user weer leegmaken
     this.userLogin = {} as User;
-    //console.log("Er is iets gebeurd");
   }
 }

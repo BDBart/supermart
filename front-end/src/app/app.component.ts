@@ -10,7 +10,6 @@ import {AuthGuardService} from "./services/auth-guard.service";
 })
 export class AppComponent {
   title = 'front-end';
-  activeUser = this.service.isLoggedIn$;
 
   constructor(private service: UserService, private router: Router, private authGuard: AuthGuardService) { }
 

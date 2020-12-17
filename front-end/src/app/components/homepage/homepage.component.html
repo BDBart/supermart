@@ -1,15 +1,15 @@
 <form (ngSubmit)="loginAttempt()" [formGroup]="loginAttemptForm">
   <div class="form-group loginContainer">
+    <div><h1>Welkom bij Supermart!</h1></div>
     <div class="credentialsItem">
-      <input type="text" placeholder="Email" formControlName="username" [(ngModel)]="userLogin.email">
-      <input type="password" placeholder="Password" formControlName="password" [(ngModel)]="userLogin.password">
+      <input type="text" placeholder="Email*" formControlName="username" [(ngModel)]="userLogin.email">
+      <input type="password" placeholder="Wachtwoord*" formControlName="password" [(ngModel)]="userLogin.password">
       <button [disabled]="loginAttemptForm.invalid">Login</button>
     </div>
     <div>
       <a routerLink="/register"><button>Geen account? *klik*</button></a>
     </div>
     <div>
-      <p>{{loggedInUser$ | async}}</p>
       <p>{{loginFailed$ | async}}</p>
     </div>
 

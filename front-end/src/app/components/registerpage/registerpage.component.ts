@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/User";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-registerpage',
@@ -13,11 +14,9 @@ export class RegisterpageComponent implements OnInit{
 
   addUserForm: FormGroup;
   user = {} as User;
-  Cmessage$ = this.service.createdMessage$;
-  _message$ = this.service.emailMessage$;
   hideAdresInputs: boolean = false;
 
-  constructor(private service: UserService, private fb: FormBuilder) { }
+  constructor(private service: UserService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.addUserForm = this.fb.group({
@@ -53,5 +52,7 @@ export class RegisterpageComponent implements OnInit{
     this.service.register(this.user);
     //weer leegmaken van de user
     this.user = {} as User;
+    //navigate
+    this.router.navigateByUrl('/home');
   }
 }
